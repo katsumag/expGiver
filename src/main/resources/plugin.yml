@@ -1,0 +1,12 @@
+main: io.github.katsumag.expGiver.expGiver
+version: 1.0
+name: ExpGiver
+api-version: 1.13
+author: katsumag
+permissions:
+  expGiver.command:
+    default: false
+    description: Allows the use of /expgive
+commands:
+  expgive:
+    description: A command to transfer a players EXP!

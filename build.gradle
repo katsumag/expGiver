@@ -1,0 +1,47 @@
+//apply plugin: 'java'
+//apply plugin: ''
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+group = pluginGroup
+version = pluginVersion
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+
+    flatDir {
+        dirs 'libs'
+    }
+
+    mavenCentral()
+    maven {
+        name = 'spigotmc-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation files("C:\\Users\\James\\Documents\\coding\\Java\\BT\\BuildTools\\spigot-1.12.2.jar")
+    //compile "me.mattstudios.utils:matt-framework:1.4"
+}
+
+shadowJar {
+    baseName = 'ExpGiver'
+    classifier = ''
+    configurations = [project.configurations.compile]
+    //relocate 'me.mattstudios.mf', 'io.github.katsumag.expGiver.shaded.mf'
+}
+
+tasks.withType(JavaCompile){
+    options.encoding = 'UTF-8'
+}
